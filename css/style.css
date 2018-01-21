@@ -1,0 +1,67 @@
+body {
+  font-size: 25px;
+}
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 805px;
+}
+
+.canvas {
+  z-index: 1;
+  display: block;
+  margin: 0 auto;  
+}
+
+.ruler {
+  display: block;
+  margin: 0 auto;  
+  width: 875px;
+  height: 80px;
+}
+
+.input-error {
+  color: red;
+}
+
+.span-error {
+  background-color: orange;
+}
+
+.addition {
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  width: 500px;
+  height: 90px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.addition-input {
+  padding: 0;
+  width: 50px;
+  font-size: 1em;
+  background-color: white;  
+  border: 1px solid gray;
+}
+
+.number {
+  position: absolute;
+  width: 40px;
+  text-align: center;
+  font-size: 1em;  
+}
+
+.number:disabled,
+.addition-input:disabled {
+  border: none;
+  background-color: transparent;
+  color: black;
+}
+
+
+
+
+
