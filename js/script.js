@@ -14,8 +14,6 @@ let c = a + b;
 additionA.innerHTML = a;
 additionB.innerHTML = b;
 amount.innerHTML = '?';
-
-
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 const px = 39;
@@ -24,15 +22,21 @@ const firstArrowBend = -60;
 const firstArrowEnd = px * a;
 const secondArrowCenter = ((px * a) + ((px * a) + (px * b))) / 2;
 const secondArrowBend = -60 / 2; 
-const secondArrowEnd = (px * b) + (px * a); // 
+const secondArrowEnd = (px * b) + (px * a);
 
-//рендер первой стрелки
 const firstArrowRender = () => {
   ctx.beginPath();
   ctx.lineWidth = 2;
   ctx.strokeStyle = 'red';
   ctx.moveTo(0, 85); 
   ctx.quadraticCurveTo(firstArrowCenter, firstArrowBend, firstArrowEnd, 85);
+  ctx.stroke();
+  
+  ctx.beginPath();
+  ctx.moveTo(firstArrowEnd, 85);
+  ctx.lineTo(firstArrowEnd - 10, 80);
+  ctx.moveTo(firstArrowEnd, 85);
+  ctx.lineTo(firstArrowEnd - 5, 75);
   ctx.stroke();
 };
 firstArrowRender();
@@ -41,6 +45,13 @@ const secondArrowRender = () => {
   ctx.beginPath();
   ctx.moveTo(firstArrowEnd, 85);
   ctx.quadraticCurveTo(secondArrowCenter, secondArrowBend, secondArrowEnd, 85);
+  ctx.stroke();
+  
+  ctx.beginPath();
+  ctx.moveTo(secondArrowEnd, 85);
+  ctx.lineTo(secondArrowEnd - 10, 80);
+  ctx.moveTo(secondArrowEnd, 85);
+  ctx.lineTo(secondArrowEnd - 3, 75);
   ctx.stroke();
 };
 
@@ -58,7 +69,6 @@ inputC.setAttribute("type", "text");
 inputC.setAttribute("maxlength", "2");
 inputC.classList.add('addition-input');
 
-//рендер второго инпута и второй стрелки
 const secondInputRender = () => {
   let inputs = document.querySelectorAll('input');
   for (let input of inputs) {
@@ -78,7 +88,6 @@ const secondInputRender = () => {
   }
 };
 
-//проверка на правильность введенных чисел
 const check =(span, input, number) => { 
   if (input.value != number) {
     input.classList.add('input-error');
@@ -96,9 +105,11 @@ const check =(span, input, number) => {
     inputC.focus();
   }
 };
-  
+ 
 inputA.oninput = () => check(additionA, inputA, a);
+
 inputB.oninput = () => check(additionB, inputB, b);
+
 inputC.oninput = () => {
   if (inputC.value == c) {
     inputC.disabled = true;
@@ -108,3 +119,4 @@ inputC.oninput = () => {
     inputC.classList.add('input-error');
   }
 };
+
